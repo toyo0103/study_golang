@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"testing"
 	"time"
 )
 
@@ -48,4 +49,16 @@ func PopCount2(x uint64) int {
 		}
 	}
 	return c
+}
+
+func BenchmarkPopCount1(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		PopCount(65427)
+	}
+}
+
+func BenchmarkPopCount2(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		PopCount2(65427)
+	}
 }
